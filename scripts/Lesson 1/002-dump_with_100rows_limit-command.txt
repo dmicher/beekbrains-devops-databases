@@ -1,0 +1,3 @@
+mysqldump --where="true limit 100" database table > database.sql
+
+/* должен быть настроен .my.cnf (.my.ini) с логином и паролем */
