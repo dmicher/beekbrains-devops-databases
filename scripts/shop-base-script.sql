@@ -7,8 +7,8 @@ CREATE TABLE catalogs (
 ) COMMENT = 'Разделы товаров';
 
 -- данные о покупателе
-DROP TABLE IF EXISTS customer;
-CREATE TABLE customer (
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
 	id SERIAL PRIMARY KEY,
 	name CHAR(255) COMMENT 'Полное имя покупателя',
 	birthday DATE COMMENT 'Дата рождения',
@@ -33,10 +33,10 @@ CREATE TABLE products (
 DROP TABLE IF EXISTS orders;
 CREATE TABLE orders (
 	id SERIAL PRIMARY KEY,
-	customer_id INT UNSIGNED COMMENT 'Идентификатор покупателя, к которому относится этот заказ',
+	user_id INT UNSIGNED COMMENT 'Идентификатор покупателя, к которому относится этот заказ',
 	created DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Дата создания записи о заказе',
 	updated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Дата обновления записи о заказе',
-	KEY index_of_customer_id(customer_id)
+	KEY index_of_user_id(customer_id)
 ) COMMENT = 'Заказы покупателей';
 
 -- покупки в заказе
@@ -56,7 +56,7 @@ CREATE TABLE order_products (
 DROP TABLE IF EXISTS discounts;
 CREATE TABLE discounts (
 	id SERIAL PRIMARY KEY,
-	costumer_id INT UNSIGNED COMMENT 'Покупатель, которому предоставляется скидка',
+	user_id INT UNSIGNED COMMENT 'Покупатель, которому предоставляется скидка',
 	product_id INT UNSIGNED COMMENT 'Товар, на который предоставляется скидка',
 	amount FLOAT COMMENT 'Размер скидки в значении от 0.0 до 1.0',
 	starts DATETIME NULL COMMENT '(оционально) Дата начала действия скидки',
