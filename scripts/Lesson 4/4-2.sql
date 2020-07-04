@@ -20,25 +20,31 @@ CREATE TABLE users (
 	INDEX index_of_birthday(birthday)
 ) COMMENT = 'Покупатель в магазине';
 INSERT INTO users VALUES
-	(DEFAULT, 'Игорь', '1990-01-01', DEFAULT, DEFAULT),
-	(DEFAULT, 'Ольга', '1991-02-02', DEFAULT, DEFAULT),
-	(DEFAULT, 'Сева', '1992-03-03', DEFAULT, DEFAULT),
-	(DEFAULT, 'Ирина', '1993-04-04', DEFAULT, DEFAULT),
-	(DEFAULT, 'Константин', '1994-05-05', DEFAULT, DEFAULT),
-	(DEFAULT, 'Ульяна', '1995-06-10', DEFAULT, DEFAULT),
-	(DEFAULT, 'Владислав', '1996-07-11', DEFAULT, DEFAULT),
-	(DEFAULT, 'Марина', '1997-08-12', DEFAULT, DEFAULT),
-	(DEFAULT, 'Егор', '1998-09-13', DEFAULT, DEFAULT),
-	(DEFAULT, 'Татьяна', '1999-10-14', DEFAULT, DEFAULT),
-	(DEFAULT, 'Василий', '2000-11-15', DEFAULT, DEFAULT),
-	(DEFAULT, 'Нина', '2001-12-20', DEFAULT, DEFAULT);
+	(DEFAULT, 'Игорь',		'1991-01-01', DEFAULT, DEFAULT),
+	(DEFAULT, 'Ольга',		'1992-02-02', DEFAULT, DEFAULT),
+	(DEFAULT, 'Сева',		'1993-03-03', DEFAULT, DEFAULT),
+	(DEFAULT, 'Ирина',		'1994-04-04', DEFAULT, DEFAULT),
+	(DEFAULT, 'Константин',	'1995-05-05', DEFAULT, DEFAULT),
+	(DEFAULT, 'Ульяна',		'1996-06-06', DEFAULT, DEFAULT),
+	(DEFAULT, 'Владислав',	'1997-07-07', DEFAULT, DEFAULT),
+	(DEFAULT, 'Марина',		'1998-08-08', DEFAULT, DEFAULT),
+	(DEFAULT, 'Егор',		'1999-09-09', DEFAULT, DEFAULT),
+	(DEFAULT, 'Татьяна',	'2000-10-10', DEFAULT, DEFAULT),
+	(DEFAULT, 'Василий',	'2001-11-11', DEFAULT, DEFAULT),
+	(DEFAULT, 'Нина',		'2002-12-12', DEFAULT, DEFAULT);
 SELECT id, name, birthday FROM users;
 
 /* Выполняет задание:
-WEEKDAY(DATE_FORMAT(birthday, CONCAT(YEAR(NOW()), '-%m-%d')))
+ * 1. определяет день недели, как дату, полученную от склейки строки, остоящей из:
+ *    - года текущего времени-даты,
+ *    - месяца и даты дня рождения каждого пользвоателя;
+ * Преобразует полученное числовое значение в кириллическое название дня недели;
+ * 2. группирует результат по дням недели, подсчитывая количество соответствующих записей;
+ * 3. также выводит всех пользователей с днями рождения в эти дни в одной строке;
+ * 4. сортирует данные по дням недели в соответствии с естетсвенным расположением их в неделе.
  */
 SELECT 
-	CASE
+	CASE -- 1
 		WHEN WEEKDAY(DATE_FORMAT(birthday, CONCAT(YEAR(NOW()), '-%m-%d'))) = 1 THEN 'Понедельник'
 		WHEN WEEKDAY(DATE_FORMAT(birthday, CONCAT(YEAR(NOW()), '-%m-%d'))) = 2 THEN 'Вторник'
 		WHEN WEEKDAY(DATE_FORMAT(birthday, CONCAT(YEAR(NOW()), '-%m-%d'))) = 3 THEN 'Среда'
@@ -47,12 +53,12 @@ SELECT
 		WHEN WEEKDAY(DATE_FORMAT(birthday, CONCAT(YEAR(NOW()), '-%m-%d'))) = 6 THEN 'Суббота'
 		WHEN WEEKDAY(DATE_FORMAT(birthday, CONCAT(YEAR(NOW()), '-%m-%d'))) = 7 THEN 'Воскресенье'
 		ELSE NULL
-	END
-	AS day_of_week,
-	COUNT(*)
+	END AS week_day,
+	COUNT(*) AS `birthdays`, -- 2
+	GROUP_CONCAT(name ORDER BY name SEPARATOR ', ') AS `users` -- 3
  FROM users
- GROUP BY day_of_week;
--- todo ЗАКОНЧИЛ ТУТ: доделать сортировку подням недели
+ GROUP BY week_day  -- 2
+ ORDER BY FIELD(week_day, 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'); -- 4
 
 -- Чистит базу и выходит
 DROP DATABASE shop_lesson4_task2_04072020_dak;

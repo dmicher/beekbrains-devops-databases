@@ -19,24 +19,26 @@ CREATE TABLE users (
 	INDEX index_of_birthday(birthday)
 ) COMMENT = 'Покупатель в магазине';
 INSERT INTO users VALUES
-	(DEFAULT, 'Игорь', '1990-01-01', DEFAULT, DEFAULT),
-	(DEFAULT, 'Ольга', '1991-02-02', DEFAULT, DEFAULT),
-	(DEFAULT, 'Сева', '1992-03-03', DEFAULT, DEFAULT),
-	(DEFAULT, 'Ирина', '1993-04-04', DEFAULT, DEFAULT),
-	(DEFAULT, 'Константин', '1994-05-05', DEFAULT, DEFAULT),
-	(DEFAULT, 'Ульяна', '1995-06-10', DEFAULT, DEFAULT),
-	(DEFAULT, 'Владислав', '1996-07-11', DEFAULT, DEFAULT),
-	(DEFAULT, 'Марина', '1997-08-12', DEFAULT, DEFAULT),
-	(DEFAULT, 'Егор', '1998-09-13', DEFAULT, DEFAULT),
-	(DEFAULT, 'Татьяна', '1999-10-14', DEFAULT, DEFAULT),
-	(DEFAULT, 'Василий', '2000-11-15', DEFAULT, DEFAULT),
-	(DEFAULT, 'Нина', '2001-12-20', DEFAULT, DEFAULT);
+	(DEFAULT, 'Игорь',		'1990-01-01', DEFAULT, DEFAULT),
+	(DEFAULT, 'Ольга',		'1991-02-02', DEFAULT, DEFAULT),
+	(DEFAULT, 'Сева',		'1992-03-03', DEFAULT, DEFAULT),
+	(DEFAULT, 'Ирина',		'1993-04-04', DEFAULT, DEFAULT),
+	(DEFAULT, 'Константин',	'1994-05-05', DEFAULT, DEFAULT),
+	(DEFAULT, 'Ульяна',		'1995-06-10', DEFAULT, DEFAULT),
+	(DEFAULT, 'Владислав',	'1996-07-11', DEFAULT, DEFAULT),
+	(DEFAULT, 'Марина',		'1997-08-12', DEFAULT, DEFAULT),
+	(DEFAULT, 'Егор',		'1998-09-13', DEFAULT, DEFAULT),
+	(DEFAULT, 'Татьяна',	'1999-10-14', DEFAULT, DEFAULT),
+	(DEFAULT, 'Василий',	'2000-11-15', DEFAULT, DEFAULT),
+	(DEFAULT, 'Нина',		'2000-12-20', DEFAULT, DEFAULT);
 SELECT id, name, birthday FROM users;
 
 /* Выполняет задание:
- * Результат - это округление до 1-го знака после запятой среднего значения количества лет,
- * полученных из количества дней, высчитанного из разницы между текущей датой и датой рождения
- * каждого отдельного пользователя в таблице users.
+ * - получает разницу между двумя датами в количестве дней;
+ * - превращает её в разницу дат по формату ГГГГ-ММ-ДД;
+ * - вытаскивает оттуда количество годов;
+ * - находит среднее значение;
+ * - округляет его до первого знака после запятой.
  */
 SELECT ROUND(AVG(YEAR(FROM_DAYS(DATEDIFF(NOW(), birthday)))), 1) AS averege_age FROM users;
 
