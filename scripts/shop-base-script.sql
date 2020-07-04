@@ -144,7 +144,7 @@ INSERT INTO products VALUES
 -- 3:
 	(NULL, 'Камень А2-3.2', 'Скалярный, ядер - 4, тактовая частота 1600 ГГц, x86-64', 2700, 1, DEFAULT, DEFAULT),
 -- 4:
-	(NULL, 'Ветерок серии 0', 'Векторный, ядер - 8, тактовая частота 3200, x86-64', 7300, 1, DEFAULT, DEFAULT),
+	(NULL, 'Векторок с0', 'Векторный, ядер - 8, тактовая частота 3200, x86-64', 7300, 1, DEFAULT, DEFAULT),
 -- 5:
 	(NULL, 'Родина 15-А', 'Материнская плата серии \"Родина 15\". Базовая', 6850, 2, DEFAULT, DEFAULT),
 -- 6:
@@ -170,15 +170,15 @@ INSERT INTO products VALUES
 -- 16:
 	(NULL, 'Погребок данных', 'Твердотельный, 10Тб', 15300, 5, DEFAULT, DEFAULT),
 -- 17:
-	(NULL, 'Ало-Э!', 'Сетевая карта, проводная', 3200, 6, DEFAULT, DEFAULT),
+	(NULL, 'Ало-Э! Адын', 'Сетевая карта, проводная', 3200, 6, DEFAULT, DEFAULT),
 -- 18:
-	(NULL, 'Ало-Э!', 'Сетевая карта, проводная, беспоровдная', 6100, 6, DEFAULT, DEFAULT),
+	(NULL, 'Ало-Э! Двэ', 'Сетевая карта, проводная, беспоровдная', 6100, 6, DEFAULT, DEFAULT),
 -- 19:
-	(NULL, 'Разряд', 'Блок питания, 10А, 75Вт', 1300, 7, DEFAULT, DEFAULT),
+	(NULL, 'Разряд 10', 'Блок питания, 10А, 75Вт', 1300, 7, DEFAULT, DEFAULT),
 -- 20:
-	(NULL, 'Разряд', 'Блок питания, 15А, 80Вт', 2785, 7, DEFAULT, DEFAULT),
+	(NULL, 'Разряд 15', 'Блок питания, 15А, 80Вт', 2785, 7, DEFAULT, DEFAULT),
 -- 21:
-	(NULL, 'Разряд', 'Блок питания, 30А, 660Вт', 5465, 7, DEFAULT, DEFAULT),
+	(NULL, 'Разряд 30', 'Блок питания, 30А, 660Вт', 5465, 7, DEFAULT, DEFAULT),
 -- 22:
 	(NULL, 'Клавка', 'Простая 102 кнопочная клавиатура', 1000, 8, DEFAULT, DEFAULT),
 -- 23:
@@ -287,27 +287,27 @@ INSERT INTO orders VALUES
 
 -- состав ранее сделанных заказов
 INSERT INTO order_products VALUES
-	(NULL, 1, 7, 1,  DEFAULT, DEFAULT),
-	(NULL, 1, 3, 2,  DEFAULT, DEFAULT),
-	(NULL, 1, 12, 1,  DEFAULT, DEFAULT),
-	(NULL, 1, 32, 15,  DEFAULT, DEFAULT),
-	(NULL, 2, 2, 2,  DEFAULT, DEFAULT),
-	(NULL, 2, 7, 1,  DEFAULT, DEFAULT),
-	(NULL, 2, 13, 1,  DEFAULT, DEFAULT),
-	(NULL, 2, 24, 1,  DEFAULT, DEFAULT),
-	(NULL, 3, 29, 1,  DEFAULT, DEFAULT),
-	(NULL, 3, 16, 2,  DEFAULT, DEFAULT),
-	(NULL, 3, 10, 1,  DEFAULT, DEFAULT),
-	(NULL, 4, 1, 1,  DEFAULT, DEFAULT),
-	(NULL, 4, 3, 1,  DEFAULT, DEFAULT),
-	(NULL, 5, 8, 1,  DEFAULT, DEFAULT),
-	(NULL, 6, 3, 1,  DEFAULT, DEFAULT),
-	(NULL, 6, 6, 1,  DEFAULT, DEFAULT),
-	(NULL, 6, 9, 2,  DEFAULT, DEFAULT),
-	(NULL, 6, 12, 2,  DEFAULT, DEFAULT),
-	(NULL, 6, 15, 1,  DEFAULT, DEFAULT),
+	(NULL, 1, 7, 1, DEFAULT, DEFAULT),
+	(NULL, 1, 3, 2, DEFAULT, DEFAULT),
+	(NULL, 1, 12, 1, DEFAULT, DEFAULT),
+	(NULL, 1, 32, 15, DEFAULT, DEFAULT),
+	(NULL, 2, 2, 2, DEFAULT, DEFAULT),
+	(NULL, 2, 7, 1, DEFAULT, DEFAULT),
+	(NULL, 2, 13, 1, DEFAULT, DEFAULT),
+	(NULL, 2, 24, 1, DEFAULT, DEFAULT),
+	(NULL, 3, 29, 1, DEFAULT, DEFAULT),
+	(NULL, 3, 16, 2, DEFAULT, DEFAULT),
+	(NULL, 3, 10, 1, DEFAULT, DEFAULT),
+	(NULL, 4, 1, 1, DEFAULT, DEFAULT),
+	(NULL, 4, 3, 1, DEFAULT, DEFAULT),
+	(NULL, 5, 8, 1, DEFAULT, DEFAULT),
+	(NULL, 6, 3, 1, DEFAULT, DEFAULT),
+	(NULL, 6, 6, 1, DEFAULT, DEFAULT),
+	(NULL, 6, 9, 2, DEFAULT, DEFAULT),
+	(NULL, 6, 12, 2, DEFAULT, DEFAULT),
+	(NULL, 6, 15, 1, DEFAULT, DEFAULT),
 	(NULL, 7, 12, 10, DEFAULT, DEFAULT),
-	(NULL, 8, 16, 3,  DEFAULT, DEFAULT);
+	(NULL, 8, 16, 3, DEFAULT, DEFAULT);
 
 -- установленные скидки для пользователей
 INSERT INTO discounts VALUES
