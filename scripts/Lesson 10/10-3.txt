@@ -1,0 +1,48 @@
+/* ЗАДАНИЕ 3
+ * Организуйте хранение категорий и товарных позиций учебной базы данных shop в СУБД MongoDB
+ *
+ * Решение
+ * Категории будем хранить в массиве catalogs. Товарные позиции - в массиве products.
+ * В массиве каталогов будут перечислены просто имена самих каталогов.
+ * В массиве товаров будут приведены объекты, содержащие имя товара, описание и имя каталога.
+ * 
+ * Консольные команды и вывод ниже демонстрирует хранение и возврат описанных данных.
+ * В конце данные удаляются и проверяется, что база зачищена.
+ */
+
+> db.shop.catalogs.insert({"catalogs": ["Processors", "Mother borads", "Videocards"]})
+WriteResult({ "nInserted" : 1 })
+
+> db.shop.catalogs.find()
+{ "_id" : ObjectId("5f04ce76bf4578df839dd224"), "catalogs" : [ "Processors", "Mother borads", "Videocards" ] }
+
+> db.shop.products.insertMany([{"name": "Proc1", "description": "x86", "catalog": "Processors"}, {"name": "Proc2", "description": "x86-64", "catalog": "Processors"}, {"name": "MotherB1", "description": "", "catalog": "Mother boards"}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("5f04d187bf4578df839dd225"),
+                ObjectId("5f04d187bf4578df839dd226"),
+                ObjectId("5f04d187bf4578df839dd227")
+        ]
+}
+
+> db.shop.products.find()
+{ "_id" : ObjectId("5f04d187bf4578df839dd225"), "name" : "Proc1", "description" : "x86", "catalog" : "Processors" }
+{ "_id" : ObjectId("5f04d187bf4578df839dd226"), "name" : "Proc2", "description" : "x86-64", "catalog" : "Processors" }
+{ "_id" : ObjectId("5f04d187bf4578df839dd227"), "name" : "MotherB1", "description" : "", "catalog" : "Mother boards" }
+
+
+
+
+> db.shop.catalogs.drop()
+true
+> db.shop.catalogs.find()
+> db.shop.products.drop()
+true
+> db.shop.products.find()
+> db.shop.count()
+0
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
